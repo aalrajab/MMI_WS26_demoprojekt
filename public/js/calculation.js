@@ -1,6 +1,6 @@
 const powerButton = document.getElementById("display");
 
-let temperature = 21, mode = "summer", level = 0, isOn = true;
+let temperature = 21, mode = "sommer", level = 0, isOn = true;
 
 
 const dateObj = document.getElementById("date");
@@ -32,7 +32,7 @@ function updateDisplay() {
     if (!isOn) {
         temperatureObj.innerText = `Temperatur: ${temperature} Celsius`
         levelObj.innerText = `Level: ${level}`
-        modusObj.innerText = `Modus: ${mode}`
+        modusObj.innerText = `Jahreszeit: ${mode}`
     } else {
         temperatureObj.innerText = ""
         levelObj.innerText = ""
@@ -95,6 +95,18 @@ function levelChange() {
 }
 
 function modeChange() {
-    mode == "summer" ? mode = "winter" : mode = "summer"
+    switch (mode) {
+        case "frühling":
+            mode = "sommer";
+            break;
+        case "sommer":
+            mode = "herbst";
+            break;
+        case "herbst":
+            mode = "winter";
+            break;
+        default:
+            mode = "frühling";
+    }
     updateDisplay();
 }
